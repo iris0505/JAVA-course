@@ -1,0 +1,58 @@
+public class Main {
+    public static void main(String[] args) {
+        // Примеры использования операторов с базовыми типами
+        int a = 10;
+        int b = 5;
+
+        // Арифметические операторы
+        int sum = a + b; // Сложение
+        int difference = a - b; // Вычитание
+        int product = a * b; // Умножение
+        int quotient = a / b; // Деление
+        int remainder = a % b; // Остаток от деления
+
+        System.out.println("Сложение: " + sum);
+        System.out.println("Вычитание: " + difference);
+        System.out.println("Умножение: " + product);
+        System.out.println("Деление: " + quotient);
+        System.out.println("Остаток от деления: " + remainder);
+
+        // Операторы инкремента и декремента
+        int x = 5;
+        System.out.println("Префиксный инкремент: " + (++x); // x становится 6, выводит 6
+        System.out.println("Постфиксный инкремент: " + (x++); // выводит 6, x становится 7
+        System.out.println("После постфиксного инкремента: " + x); // выводит 7
+
+        System.out.println("Префиксный декремент: " + (--x); // x становится 6, выводит 6
+        System.out.println("Постфиксный декремент: " + (x--); // выводит 6, x становится 5
+        System.out.println("После постфиксного декремента: " + x); // выводит 5
+
+        // Операторы сравнения
+        boolean isEqual = (a == b); // Сравнение на равенство
+        boolean isNotEqual = (a != b); // Сравнение на неравенство
+        boolean isGreater = (a > b); // Больше
+        boolean isLess = (a < b); // Меньше
+
+        System.out.println("a равно b: " + isEqual);
+        System.out.println("a не равно b: " + isNotEqual);
+        System.out.println("a больше b: " + isGreater);
+        System.out.println("a меньше b: " + isLess);
+
+        // Операторы с типом String
+        String str1 = "Hello";
+        String str2 = "World";
+        String concatenated = str1 + " " + str2; // Конкатенация строк
+
+        System.out.println("Конкатенация строк: " + concatenated);
+
+        // Пример использования оператора instanceof
+        Object obj = "Это строка";
+        boolean isString = obj instanceof String; // Проверка, является ли obj строкой
+        System.out.println("obj является строкой: " + isString);
+
+        // Пример с null
+        Object nullObj = null;
+        boolean isNullString = nullObj instanceof String; // Проверка, является ли nullObj строкой
+        System.out.println("nullObj является строкой: " + isNullString); // Вывод: false
+    }
+}
