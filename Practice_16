@@ -1,0 +1,44 @@
+// Суперкласс с final-методом
+class SuperClass {
+    // final-метод, который нельзя переопределять
+    public final void display() {
+        System.out.println("Это метод суперкласса.");
+    }
+}
+
+// Подкласс, который пытается переопределить final-метод
+class SubClass extends SuperClass {
+    // Попытка переопределить final-метод (это вызовет ошибку компиляции)
+    /*
+    @Override
+    public void display() {
+        System.out.println("Это метод подкласса.");
+    }
+    */
+}
+
+// final-класс, который нельзя наследовать
+final class FinalClass {
+    public void show() {
+        System.out.println("Это метод final-класса.");
+    }
+}
+
+// Попытка создать подкласс для final-класса (это вызовет ошибку компиляции)
+/*
+class SubFinalClass extends FinalClass {
+    // Этот класс не может наследовать FinalClass
+}
+*/
+
+public class Main {
+    public static void main(String[] args) {
+        // Создание объекта суперкласса и вызов final-метода
+        SuperClass superClass = new SuperClass();
+        superClass.display();
+
+        // Создание объекта final-класса и вызов его метода
+        FinalClass finalClass = new FinalClass();
+        finalClass.show();
+    }
+}
