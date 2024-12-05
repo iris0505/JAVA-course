@@ -1,0 +1,60 @@
+// Класс с различными спецификаторами доступа
+class AccessModifiers {
+    // public - доступен из любого класса
+    public int publicVar = 1;
+
+    // protected - доступен в том же пакете и в подклассах
+    protected int protectedVar = 2;
+
+    // private - доступен только внутри этого класса
+    private int privateVar = 3;
+
+    // package-private (по умолчанию) - доступен только в пределах этого пакета
+    int defaultVar = 4;
+
+    // Метод для демонстрации доступа к переменным
+    public void display() {
+        System.out.println("Public Variable: " + publicVar);
+        System.out.println("Protected Variable: " + protectedVar);
+        System.out.println("Private Variable: " + privateVar);
+        System.out.println("Default Variable: " + defaultVar);
+    }
+}
+
+// Класс в том же пакете
+class SamePackageClass {
+    public void accessModifiers() {
+        AccessModifiers am = new AccessModifiers();
+        System.out.println("Accessing from SamePackageClass:");
+        System.out.println("Public Variable: " + am.publicVar);
+        System.out.println("Protected Variable: " + am.protectedVar);
+        System.out.println("Default Variable: " + am.defaultVar);
+        // System.out.println("Private Variable: " + am.privateVar); // Ошибка: privateVar недоступен
+    }
+}
+
+// Класс в другом пакете
+class DifferentPackageClass {
+    public void accessModifiers() {
+        AccessModifiers am = new AccessModifiers();
+        System.out.println("Accessing from DifferentPackageClass:");
+        System.out.println("Public Variable: " + am.publicVar);
+        // System.out.println("Protected Variable: " + am.protectedVar); // Ошибка: protectedVar недоступен
+        // System.out.println("Default Variable: " + am.defaultVar); // Ошибка: defaultVar недоступен
+        // System.out.println("Private Variable: " + am.privateVar); // Ошибка: privateVar недоступен
+    }
+}
+
+// Главный класс для запуска программы
+public class Main {
+    public static void main(String[] args) {
+        AccessModifiers am = new AccessModifiers();
+        am.display();
+
+        SamePackageClass spc = new SamePackageClass();
+        spc.accessModifiers();
+
+        DifferentPackageClass dpc = new DifferentPackageClass();
+        dpc.accessModifiers();
+    }
+}
