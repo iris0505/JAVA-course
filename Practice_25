@@ -1,0 +1,61 @@
+import java.util.StringJoiner;
+
+public class Main {
+    public static void main(String[] args) {
+        // 1. Пример использования методов класса String
+        String str = "Hello, World!";
+
+        // 1. length() - возвращает длину строки
+        System.out.println("Length: " + str.length()); // Вывод: 13
+
+        // 2. charAt(int index) - возвращает символ по указанному индексу
+        System.out.println("Character at index 7: " + str.charAt(7)); // Вывод: W
+
+        // 3. substring(int beginIndex) - возвращает подстроку, начиная с указанного индекса
+        System.out.println("Substring from index 7: " + str.substring(7)); // Вывод: World!
+
+        // 4. substring(int beginIndex, int endIndex) - возвращает подстроку между указанными индексами
+        System.out.println("Substring from index 0 to 5: " + str.substring(0, 5)); // Вывод: Hello
+
+        // 5. toLowerCase() - преобразует строку в нижний регистр
+        System.out.println("Lowercase: " + str.toLowerCase()); // Вывод: hello, world!
+
+        // 6. toUpperCase() - преобразует строку в верхний регистр
+        System.out.println("Uppercase: " + str.toUpperCase()); // Вывод: HELLO, WORLD!
+
+        // 7. trim() - удаляет пробелы в начале и конце строки
+        String strWithSpaces = "   Hello, World!   ";
+        System.out.println("Trimmed: '" + strWithSpaces.trim() + "'"); // Вывод: 'Hello, World!'
+
+        // 8. replace(char oldChar, char newChar) - заменяет символы в строке
+        System.out.println("Replace 'o' with '0': " + str.replace('o', '0')); // Вывод: Hell0, W0rld!
+
+        // 9. split(String regex) - разбивает строку на массив строк по заданному регулярному выражению
+        String[] words = str.split(", ");
+        System.out.println("Split by ', ': " + java.util.Arrays.toString(words)); // Вывод: [Hello, World!]
+
+        // 10. contains(CharSequence sequence) - проверяет, содержит ли строка указанную последовательность
+        System.out.println("Contains 'World': " + str.contains("World")); // Вывод: true
+
+        // 2. Примеры использования класса StringJoiner
+        // Создание StringJoiner с разделителем ", "
+        StringJoiner joiner = new StringJoiner(", ");
+        
+        // Добавление строк
+        joiner.add("Apple");
+        joiner.add("Banana");
+        joiner.add("Cherry");
+        
+        // Вывод результата
+        System.out.println("Joined String: " + joiner.toString()); // Вывод: Apple, Banana, Cherry
+
+        // Создание StringJoiner с разделителем и начальным/конечным символами
+        StringJoiner joinerWithBraces = new StringJoiner(", ", "{", "}");
+        joinerWithBraces.add("One");
+        joinerWithBraces.add("Two");
+        joinerWithBraces.add("Three");
+        
+        // Вывод результата
+        System.out.println("Joined String with braces: " + joinerWithBraces.toString()); // Вывод: {One, Two, Three}
+    }
+}
