@@ -1,0 +1,73 @@
+// Перечисление для дней недели с инициализацией элементов
+enum Day {
+    SUNDAY("Воскресенье"),
+    MONDAY("Понедельник"),
+    TUESDAY("Вторник"),
+    WEDNESDAY("Среда"),
+    THURSDAY("Четверг"),
+    FRIDAY("Пятница"),
+    SATURDAY("Суббота");
+
+    private final String russianName;
+
+    // Конструктор для инициализации имени дня на русском языке
+    Day(String russianName) {
+        this.russianName = russianName;
+    }
+
+    // Метод для получения имени дня на русском языке
+    public String getRussianName() {
+        return russianName;
+    }
+}
+
+// Перечисление для уровней доступа с дополнительным методом
+enum AccessLevel {
+    GUEST(1),
+    USER(2),
+    ADMIN(3);
+
+    private final int level;
+
+    // Конструктор для инициализации уровня доступа
+    AccessLevel(int level) {
+        this.level = level;
+    }
+
+    // Метод для получения уровня доступа
+    public int getLevel() {
+        return level;
+    }
+
+    // Метод для проверки, имеет ли уровень доступа право на выполнение действия
+    public boolean canAccess(int requiredLevel) {
+        return this.level >= requiredLevel;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Пример использования перечисления Day
+        System.out.println("Дни недели:");
+        for (Day day : Day.values()) {
+            System.out.println(day + " - " + day.getRussianName());
+        }
+
+        // Пример использования перечисления AccessLevel
+        System.out.println("\nУровни доступа:");
+        for (AccessLevel accessLevel : AccessLevel.values()) {
+            System.out.println(accessLevel + " (уровень " + accessLevel.getLevel() + ")");
+        }
+
+        // Проверка прав доступа
+        int requiredLevel = 2; // Уровень доступа, необходимый для выполнения действия
+        System.out.println("\nПроверка прав доступа:");
+        for (AccessLevel accessLevel : AccessLevel.values()) {
+            if (accessLevel.canAccess(requiredLevel)) {
+                System.out.println(accessLevel + " имеет доступ к уровню " + requiredLevel);
+            } else {
+                System.out.println(accessLevel + " не имеет доступа к уровню " + requiredLevel);
+            }
+        }
+    }
+}
