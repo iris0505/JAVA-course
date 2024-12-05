@@ -1,0 +1,67 @@
+// Класс A с переменной и методом
+class A {
+    int a = 10; // Переменная a
+    void method() {
+        System.out.println("Метод класса A");
+    }
+}
+
+// Класс B, наследующий A
+class B extends A {
+    // Класс B не добавляет ничего нового
+}
+
+// Класс C, наследующий B
+class C extends B {
+    void method() {
+        // 1. Использование super для доступа к переменной a
+        int a = super.a; // Доступ к переменной a из класса A
+        System.out.println("Значение a из класса A: " + a);
+
+        // 2. Использование super для вызова метода method() из класса A
+        super.method(); // Вызов метода из класса A
+
+        // 3. Использование super для вызова метода класса B (если бы он был)
+        // В данном случае метод не переопределен в B, поэтому вызов будет из A
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        C objC = new C();
+        objC.method(); // Вызов метода класса C
+
+        // Ответ на вопрос:
+        // Если переменная a и метод method() не будут определены в классе B,
+        // а будут определены только в классе A, то при вызове метода method()
+        // объекта класса C, метод будет успешно вызван, и переменная a будет
+        // доступна через super.a, так как C наследует B, а B наследует A.
+    }
+}
+
+// Переписанный код с использованием конструкции this()
+class AWithConstructors {
+    int a;
+    int b;
+    int c;
+    int z;
+
+    public AWithConstructors() {
+        this(0, 0, 0); // Вызов конструктора с тремя параметрами
+    }
+
+    public AWithConstructors(int a) {
+        this(a, 0, 0); // Вызов конструктора с тремя параметрами
+    }
+
+    public AWithConstructors(int a, int b) {
+        this(a, b, 0); // Вызов конструктора с тремя параметрами
+    }
+
+    public AWithConstructors(int a, int b, int c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        z = 1; // Инициализация z
+    }
+}
