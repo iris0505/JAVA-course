@@ -1,0 +1,26 @@
+public class ExceptionHandlingExample {
+    public static void main(String[] args) {
+        // Пример 1: Обработка нескольких исключений одинаковым образом
+        try {
+            // Генерация исключений
+            throw new Ex3(); // Это исключение будет выброшено
+        } catch (Ex1 | Ex2 | Ex3 e) {
+            // Обработка всех исключений одинаковым образом
+            System.out.println("Перехвачено исключение: " + e.getClass().getSimpleName());
+        }
+
+        // Пример 2: Генерация исключений для демонстрации иерархии
+        try {
+            // Генерация исключения Ex2
+            throw new Ex2(); // Это исключение будет выброшено
+        } catch (Ex1 e) {
+            // Обработка исключения Ex1 и его подклассов
+            System.out.println("Перехвачено исключение в иерархии: " + e.getClass().getSimpleName());
+        }
+    }
+}
+
+// Иерархия исключений
+class Ex1 extends Exception {}
+class Ex2 extends Ex1 {}
+class Ex3 extends Ex2 {}
