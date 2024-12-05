@@ -1,0 +1,49 @@
+// Интерфейс с неабстрактным и статическим методом
+interface MyInterface {
+    // Неабстрактный метод
+    default void display() {
+        System.out.println("Display from MyInterface");
+    }
+
+    // Статический метод
+    static void staticMethod() {
+        System.out.println("Static method in MyInterface");
+    }
+}
+
+// Второй интерфейс с одинаковым неабстрактным методом
+interface AnotherInterface {
+    // Неабстрактный метод
+    default void display() {
+        System.out.println("Display from AnotherInterface");
+    }
+}
+
+// Класс, реализующий оба интерфейса
+class MyClass implements MyInterface, AnotherInterface {
+    // Переопределяем метод display(), чтобы разрешить конфликт
+    @Override
+    public void display() {
+        // Можно вызвать метод из одного из интерфейсов
+        MyInterface.super.display(); // Вызов метода из MyInterface
+        // Или
+        // AnotherInterface.super.display(); // Вызов метода из AnotherInterface
+        System.out.println("Display from MyClass");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyClass myClass = new MyClass();
+
+        // Вызов неабстрактного метода
+        myClass.display(); // Вывод: Display from MyInterface
+                           //         Display from MyClass
+
+        // Вызов статического метода интерфейса
+        MyInterface.staticMethod(); // Вывод: Static method in MyInterface
+
+        // Вызов статического метода из другого интерфейса (если нужно)
+        // AnotherInterface.staticMethod(); // Это вызовет ошибку, так как статический метод не определен
+    }
+}
