@@ -1,0 +1,39 @@
+// Интерфейс с вложенным статическим классом
+interface MyInterface {
+    // Вложенный статический класс
+    class NestedClass {
+        private String message;
+
+        public NestedClass(String message) {
+            this.message = message;
+        }
+
+        public void displayMessage() {
+            System.out.println("Message from NestedClass: " + message);
+        }
+    }
+
+    void someMethod();
+}
+
+// Реализация интерфейса
+class MyClass implements MyInterface {
+    @Override
+    public void someMethod() {
+        System.out.println("Some method implementation in MyClass.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Создание экземпляра вложенного класса
+        MyInterface.NestedClass nestedClassInstance = new MyInterface.NestedClass("Hello, World!");
+        
+        // Вызов метода вложенного класса
+        nestedClassInstance.displayMessage();
+
+        // Создание экземпляра класса, реализующего интерфейс
+        MyClass myClassInstance = new MyClass();
+        myClassInstance.someMethod();
+    }
+}
