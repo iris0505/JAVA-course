@@ -1,0 +1,28 @@
+// Создаем собственное исключение
+class MyCustomException extends Exception {
+    public MyCustomException(String message) {
+        super(message);
+    }
+}
+
+// Класс, который использует собственное исключение
+public class ExceptionDemo {
+    public static void main(String[] args) {
+        try {
+            // Вызываем метод, который может выбросить собственное исключение
+            riskyMethod();
+        } catch (MyCustomException e) {
+            // Обрабатываем собственное исключение
+            System.out.println("Перехвачено собственное исключение: " + e.getMessage());
+        }
+    }
+
+    // Метод, который может выбросить собственное исключение
+    public static void riskyMethod() throws MyCustomException {
+        // Генерируем условие для выбрасывания исключения
+        boolean errorCondition = true; // Замените на вашу логику
+        if (errorCondition) {
+            throw new MyCustomException("Произошла ошибка в riskyMethod");
+        }
+    }
+}
