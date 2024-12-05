@@ -1,0 +1,40 @@
+// Интерфейс для летающих птиц
+interface Flyable {
+    void fly();
+}
+
+// Суперкласс
+class Bird {
+    // Общие свойства и методы для всех птиц
+}
+
+// Подкласс, который может летать
+class Sparrow extends Bird implements Flyable {
+    @Override
+    public void fly() {
+        System.out.println("Я, воробей, летаю!");
+    }
+}
+
+// Подкласс, который не может летать
+class Penguin extends Bird {
+    // Пингвин не реализует Flyable
+}
+
+// Класс, который использует летающих птиц
+class BirdWatcher {
+    public void makeBirdFly(Flyable bird) {
+        bird.fly();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        BirdWatcher watcher = new BirdWatcher();
+        
+        Flyable sparrow = new Sparrow();
+        watcher.makeBirdFly(sparrow); // Работает корректно
+
+        // Bird penguin = new Penguin(); // Пингвин не может быть передан в makeBirdFly
+    }
+}
