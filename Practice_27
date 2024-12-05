@@ -1,0 +1,36 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class SpecifiersAndFlushDemo {
+    public static void main(String[] args) {
+        // Пример использования спецификаторов формата
+        String name = "Alice";
+        int age = 30;
+        double height = 5.7;
+        char initial = 'A';
+        boolean isStudent = true;
+
+        // 1. Использование спецификаторов формата
+        System.out.printf("Name: %s%n", name); // %s - строка
+        System.out.printf("Age: %d years old%n", age); // %d - целое число
+        System.out.printf("Height: %.2f feet%n", height); // %.2f - число с плавающей точкой (2 знака после запятой)
+        System.out.printf("Initial: %c%n", initial); // %c - символ
+        System.out.printf("Is student: %b%n", isStudent); // %b - логическое значение
+
+        // Пример использования метода flush()
+        try {
+            // Создаем BufferedWriter для записи в файл
+            BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
+            writer.write("This is a test line.");
+            // Метод flush() используется для принудительной записи данных из буфера в файл
+            writer.flush(); // Принудительно очищаем буфер и записываем данные в файл
+            writer.close(); // Закрываем writer
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Дополнительный вывод для демонстрации
+        System.out.println("Data has been written to output.txt");
+    }
+}
