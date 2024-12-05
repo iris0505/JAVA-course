@@ -1,24 +1,63 @@
-public class TryFinallyExample {
-    public static void main(String[] args) {
-        // Пример 1: try без catch и finally (недопустимо)
-        // try {
-        //     // код
-        // }Закомментирован, так как он недопустим и приведет к ошибке компиляции.
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
-        // Пример 2: try только с finally (допустимо)  Блок try выполняется, и затем всегда выполняется блок finally, даже если в блоке try не было исключений.
-        try {
-            System.out.println("Выполняется блок try.");
-        } finally {
-            System.out.println("Выполняется блок finally.");
+// Пример использования InputStream
+class InputStreamExample {
+    public static void main(String[] args) {
+        // Пример 1: Использование ByteArrayInputStream для демонстрации метода read()
+        byte[] data = {65, 66, 67, 68}; // ASCII для 'A', 'B', 'C', 'D'
+        try (ByteArrayInputStream inputStream = new ByteArrayInputStream(data)) {
+            int byteData;
+            while ((byteData = inputStream.read()) != -1) {
+                System.out.print((char) byteData + " "); // Преобразуем байт в символ
+            }
+            System.out.println();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        // Пример 3: try с двумя finally (недопустимо)
-        // try {
-        //     // код
-        // } finally {
-        //     // код
-        // } finally {
-        //     // код
-        // } Закомментирован, так как наличие двух блоков finally для одного блока try также приведет к ошибке компиляции.
+        // Пример 2: Использование ByteArrayOutputStream для демонстрации метода write(int)
+        try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
+            outputStream.write(65); // Записываем 'A'
+            outputStream.write(66); // Записываем 'B'
+            outputStream.write(67); // Записываем 'C'
+            outputStream.write(68); // Записываем 'D'
+
+            // Получаем записанные данные
+            byte[] outputData = outputStream.toByteArray();
+            System.out.print("Записанные данные: ");
+            for (byte b : outputData) {
+                System.out.print((char) b + " "); // Преобразуем байт в символ
+            }
+            System.out.println();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Пример 3: Объяснение иерархий
+        // Иерархия InputStream и OutputStream предназначена для работы с байтовыми потоками.
+        // Иерархия Reader и Writer предназначена для работы с символьными потоками.
+        // Это позволяет более удобно работать с текстовыми данными, так как Reader и Writer
+        // обрабатывают кодировки и преобразования символов.
+
+        // Пример 4: Использование интерфейса AutoCloseable
+        try (MyResource resource = new MyResource()) {
+            resource.doSomething();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+// Пример класса, реализующего AutoCloseable
+class MyResource implements AutoCloseable {
+    public void doSomething() {
+        System.out.println("Ресурс используется.");
+    }
+
+    @Override
+    public void close() {
+        System.out.println("Ресурс закрыт.");
     }
 }
