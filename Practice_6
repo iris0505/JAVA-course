@@ -1,0 +1,58 @@
+public class Main {
+    public static void main(String[] args) {
+        // 1. Примеры использования метода decode()
+        String str1 = "100";
+        String str2 = "0x64"; // шестнадцатеричное представление
+        String str3 = "0100"; // восьмеричное представление
+
+        Integer decoded1 = Integer.decode(str1);
+        Integer decoded2 = Integer.decode(str2);
+        Integer decoded3 = Integer.decode(str3);
+
+        System.out.println("Decoded 100: " + decoded1); // 100
+        System.out.println("Decoded 0x64: " + decoded2); // 100
+        System.out.println("Decoded 0100: " + decoded3); // 64
+
+        // 2. Способы создания экземпляра класса Boolean
+        Boolean bool1 = new Boolean(true); // Используя конструктор
+        Boolean bool2 = Boolean.valueOf(false); // Используя статический метод valueOf
+        Boolean bool3 = Boolean.parseBoolean("true"); // Парсинг строки
+
+        System.out.println("Boolean from constructor: " + bool1);
+        System.out.println("Boolean from valueOf: " + bool2);
+        System.out.println("Boolean from parseBoolean: " + bool3);
+
+        // 3. Пример, когда будет брошено исключение NullPointerException
+        Boolean boolValue = null;
+        try {
+            boolean primitiveValue = boolValue; // Автораспаковка
+        } catch (NullPointerException e) {
+            System.out.println("NullPointerException при автораспаковке: " + e.getMessage());
+        }
+
+        // 4. Код с Integer
+        int i1 = 128;
+        Integer a1 = i1; // Автоупаковка
+        Integer b1 = i1; // Автоупаковка
+        System.out.println("a1==i1 " + (a1 == i1)); // true, автораспаковка
+        System.out.println("b1==i1 " + (b1 == i1)); // true, автораспаковка
+        System.out.println("a1==b1 " + (a1 == b1)); // false, разные объекты
+        System.out.println("a1.equals(i1) -> " + a1.equals(i1)); // true, сравнение значений
+        System.out.println("b1.equals(i1) -> " + b1.equals(i1)); // true, сравнение значений
+        System.out.println("a1.equals(b1) -> " + a1.equals(b1)); // true, сравнение значений
+
+        int i2 = 127;
+        Integer a2 = i2; // Автоупаковка
+        Integer b2 = i2; // Автоупаковка
+        System.out.println("a2==i2 " + (a2 == i2)); // true, автораспаковка
+        System.out.println("b2==i2 " + (b2 == i2)); // true, автораспаковка
+        System.out.println("a2==b2 " + (a2 == b2)); // true, один и тот же объект из IntegerCache
+        System.out.println("a2.equals(i2) -> " + a2.equals(i2)); // true, сравнение значений
+        System.out.println("b2.equals(i2) -> " + b2.equals(i2)); // true, сравнение значений
+        System.out.println("a2.equals(b2) -> " + a2.equals(b2)); // true, сравнение значений
+
+        // Объяснение результатов
+        // Класс IntegerCache используется для кэширования объектов Integer в диапазоне от -128 до 127.
+        // Это позволяет избежать создания новых объектов Integer для часто используемых значений.
+    }
+}
