@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+
+// Класс с устаревшим методом
+class OldClass {
+    @Deprecated
+    void oldMethod() {
+        System.out.println("This method is deprecated.");
+    }
+    
+    void newMethod() {
+        System.out.println("This is the new method.");
+    }
+}
+
+// Родительский класс
+class Parent {
+    void display() {
+        System.out.println("Display from Parent");
+    }
+}
+
+// Дочерний класс, переопределяющий метод родительского класса
+class Child extends Parent {
+    @Override
+    void display() {
+        System.out.println("Display from Child");
+    }
+}
+
+public class Main {
+    @SuppressWarnings("unchecked") // Подавление предупреждений о "unchecked"
+    public static void main(String[] args) {
+        // Пример использования @Override
+        Child child = new Child();
+        child.display(); // Вывод: Display from Child
+
+        // Пример использования @Deprecated
+        OldClass oldClass = new OldClass();
+        oldClass.oldMethod(); // Вывод: This method is deprecated.
+        oldClass.newMethod(); // Вывод: This is the new method.
+
+        // Пример использования @SuppressWarnings
+        ArrayList list = new ArrayList(); // Предупреждение о "unchecked"
+        list.add("Hello");
+        list.add("World");
+        
+        for (Object obj : list) {
+            System.out.println(obj); // Вывод: Hello World
+        }
+    }
+}
