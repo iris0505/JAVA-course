@@ -1,0 +1,69 @@
+import java.util.ArrayList;
+import java.util.List;
+
+// Базовый класс Fruit
+class Fruit {}
+// Подкласс Apple
+class Apple extends Fruit {}
+// Подкласс Orange
+class Orange extends Fruit {}
+// Базовый класс Animal
+class Animal {}
+// Подкласс Dog
+class Dog extends Animal {}
+// Подкласс Cat
+class Cat extends Animal {}
+
+public class Main {
+    // Метод для печати фруктов, использующий <? extends T>
+    public static void printFruits(List<? extends Fruit> fruits) {
+        for (Fruit fruit : fruits) {
+            System.out.println(fruit.getClass().getSimpleName());
+        }
+    }
+
+    // Метод для добавления фруктов, использующий <? super T>
+    public static void addFruits(List<? super Apple> fruits) {
+        fruits.add(new Apple()); // Можно добавлять яблоки
+    }
+
+    public static void main(String[] args) {
+        // Пример использования instanceof с параметризованными классами
+        List<Dog> dogList = new ArrayList<>();
+        dogList.add(new Dog());
+
+        // Проверка с использованием instanceof
+        for (Dog dog : dogList) {
+            if (dog instanceof Animal) {
+                System.out.println("Dog is an instance of Animal");
+            }
+        }
+
+        // Пример с параметризованным классом
+        List<? extends Animal> animalList = new ArrayList<Dog>();
+        // animalList.add(new Dog()); // Ошибка компиляции, нельзя добавлять элементы
+
+        // Проверка с использованием instanceof
+        for (Animal animal : animalList) {
+            if (animal instanceof Dog) {
+                System.out.println("Animal is an instance of Dog");
+            }
+        }
+
+        // Пример использования <? extends T>
+        List<Apple> apples = new ArrayList<>();
+        apples.add(new Apple());
+        System.out.println("Printing fruits:");
+        printFruits(apples); // Можно передать список яблок
+
+        // Пример использования <? super T>
+        List<Fruit> fruits = new ArrayList<>();
+        addFruits(fruits); // Можно передать список фруктов
+        System.out.println("Added an Apple to the fruit list.");
+
+        // Проверка содержимого списка фруктов
+        for (Fruit fruit : fruits) {
+            System.out.println("Fruit in the list: " + fruit.getClass().getSimpleName());
+        }
+    }
+}
