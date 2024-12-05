@@ -1,0 +1,56 @@
+class OuterClass {
+    private String outerField = "Outer Field";
+    protected String protectedOuterField = "Protected Outer Field";
+    public String publicOuterField = "Public Outer Field";
+    String defaultOuterField = "Default Outer Field"; // package-private
+
+    // Внутренний класс с различными спецификаторами доступа
+    class InnerClass {
+        private String innerField = "Inner Field";
+
+        void display() {
+            // Доступ к полям внешнего класса
+            System.out.println("Accessing from InnerClass:");
+            System.out.println("Private: " + outerField);
+            System.out.println("Protected: " + protectedOuterField);
+            System.out.println("Public: " + publicOuterField);
+            System.out.println("Default: " + defaultOuterField);
+            System.out.println("Inner: " + innerField);
+        }
+    }
+
+    // Защищенный внутренний класс
+    protected class ProtectedInnerClass {
+        void display() {
+            System.out.println("This is a protected inner class.");
+        }
+    }
+
+    // Публичный внутренний класс
+    public class PublicInnerClass {
+        void display() {
+            System.out.println("This is a public inner class.");
+        }
+    }
+
+    // Метод внешнего класса для демонстрации доступа к внутреннему классу
+    public void accessInnerClass() {
+        InnerClass inner = new InnerClass();
+        inner.display();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        OuterClass outer = new OuterClass();
+        outer.accessInnerClass(); // Доступ к внутреннему классу через метод внешнего класса
+
+        // Доступ к защищенному внутреннему классу
+        OuterClass.ProtectedInnerClass protectedInner = outer.new ProtectedInnerClass();
+        protectedInner.display();
+
+        // Доступ к публичному внутреннему классу
+        OuterClass.PublicInnerClass publicInner = outer.new PublicInnerClass();
+        publicInner.display();
+    }
+}
