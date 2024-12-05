@@ -1,0 +1,36 @@
+public class A {
+    public static int a = 1; // Инициализация переменной a
+    public static int b;      // Переменная b инициализируется значением по умолчанию (0)
+
+    public static void printVars() {
+        System.out.println("a: " + a);
+        System.out.println("b: " + b);
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        // Вызов метода printVars() из статического контекста класса A
+        A.printVars(); // Вывод: a: 1, b: 0
+
+        // Изменим значение переменной b
+        A.b = 5;
+
+        // Вызов метода printVars() снова
+        A.printVars(); // Вывод: a: 1, b: 5
+
+        // Создание экземпляра класса A (хотя это не обязательно для статических методов)
+        A instance = new A();
+        instance.printVars(); // Вывод: a: 1, b: 5 (статические переменные доступны через экземпляр, но это не рекомендуется)
+
+        // Вызов метода printVars() из другого класса
+        AnotherClass another = new AnotherClass();
+        another.callPrintVars(); // Вывод: a: 1, b: 5
+    }
+}
+
+class AnotherClass {
+    public void callPrintVars() {
+        A.printVars(); // Вызов метода printVars() из другого класса
+    }
+}
