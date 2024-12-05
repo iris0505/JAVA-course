@@ -1,0 +1,47 @@
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        // 1. Пример присвоения ссылки на массив
+        int a1[] = {1, 2, 3, 4, 5};
+        int a2[] = {6, 7, 8, 9, 10};
+
+        System.out.println("До присвоения:");
+        System.out.println("a1: " + Arrays.toString(a1));
+        System.out.println("a2: " + Arrays.toString(a2));
+
+        a1 = a2;
+
+        System.out.println("После присвоения:");
+        System.out.println("a1: " + Arrays.toString(a1));
+        System.out.println("a2: " + Arrays.toString(a2));
+
+        // 2. Примеры использования методов класса Arrays
+
+        // toString(...)
+        int[] array = {1, 2, 3, 4, 5};
+        System.out.println("Массив в строковом представлении: " + Arrays.toString(array));
+
+        // binarySearch(...)
+        int[] sortedArray = {1, 2, 3, 4, 5};
+        int index = Arrays.binarySearch(sortedArray, 3);
+        System.out.println("Индекс элемента 3 в отсортированном массиве: " + index);
+
+        // equals(...)
+        int[] array1 = {1, 2, 3, 4, 5};
+        int[] array2 = {1, 2, 3, 4, 5};
+        boolean areEqual = Arrays.equals(array1, array2);
+        System.out.println("Массивы равны: " + areEqual);
+
+        // compare(...)
+        int[] array3 = {1, 2, 3, 4, 5};
+        int[] array4 = {1, 2, 3, 4, 6};
+        int comparison = Arrays.compare(array3, array4);
+        System.out.println("Сравнение массивов: " + comparison);
+
+        // sort(...)
+        int[] unsortedArray = {5, 2, 8, 1, 9};
+        Arrays.sort(unsortedArray);
+        System.out.println("Отсортированный массив: " + Arrays.toString(unsortedArray));
+    }
+}
