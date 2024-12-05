@@ -1,0 +1,72 @@
+public class Main {
+    public static void main(String[] args) {
+        // 1. Примеры использования switch с различными типами переменных
+
+        // Пример с int
+        int number = 2;
+        switch (number) {
+            case 1:
+                System.out.println("Number is 1");
+                break;
+            case 2:
+                System.out.println("Number is 2");
+                break;
+            case 3:
+                System.out.println("Number is 3");
+                break;
+            default:
+                System.out.println("Number is not 1, 2, or 3");
+        }
+
+        // Пример с char
+        char letter = 'B';
+        switch (letter) {
+            case 'A':
+                System.out.println("Letter is A");
+                break;
+            case 'B':
+                System.out.println("Letter is B");
+                break;
+            case 'C':
+                System.out.println("Letter is C");
+                break;
+            default:
+                System.out.println("Letter is not A, B, or C");
+        }
+
+        // Пример с String (начиная с Java 7)
+        String day = "MONDAY";
+        switch (day) {
+            case "MONDAY":
+                System.out.println("It's Monday");
+                break;
+            case "TUESDAY":
+                System.out.println("It's Tuesday");
+                break;
+            case "WEDNESDAY":
+                System.out.println("It's Wednesday");
+                break;
+            default:
+                System.out.println("It's another day");
+        }
+
+        // 2. Пример без break
+        int i = 0;
+        int caseTest = 2; // Измените это значение для тестирования
+
+        switch (caseTest) {
+            case 1:
+                i = 1;
+                break;
+            case 2:
+                i = 2; // Здесь отсутствует break
+            case 3:
+                i = 3;
+                break;
+            default:
+                i = 0;
+        }
+
+        System.out.println("Value of i after switch: " + i);
+    }
+}
