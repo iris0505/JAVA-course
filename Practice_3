@@ -1,0 +1,54 @@
+public class Main {
+    public static void main(String[] args) {
+        // Примеры всех типов данных с нулевыми значениями
+        int intValue = 0; // Целое число
+        double doubleValue = 0.0; // Дробное число
+        char charValue = '\u0000'; // Символ (нулевой символ)
+        boolean booleanValue = false; // Логическое значение
+        String stringValue = null; // Строка (нулевое значение)
+
+        // Выводим "Ирина" в формате Unicode
+        System.out.println("Привет, " + "\u0418\u0440\u0438\u043D\u0430" + "!");
+
+        // Пример с переменными a, b и c
+        int a = 1;
+        {
+            int b = 2; // b доступна только в этом блоке
+        }
+        // int c = a + b; // Это вызовет ошибку компиляции, так как b не доступна здесь
+        // Объяснение: Переменная b объявлена внутри блока и не доступна вне его.
+
+        // Пример перегруженного оператора + с объектами типа String
+        String str = "Число: ";
+        int number = 5;
+        String result = str + number; // Конкатенация строки и числа
+        System.out.println(result); // Вывод: Число: 5
+
+        // Примеры арифметических операций с переменными различных типов
+        int intVar = 10;
+        double doubleVar = 5.5;
+        double result1 = intVar + doubleVar; // int автоматически преобразуется в double
+        System.out.println("Результат сложения int и double: " + result1); // Вывод: 15.5
+
+        // Примеры сужающего преобразования типов
+        double largeDouble = 123.456;
+        int smallInt = (int) largeDouble; // Приведение типа, дробная часть отбрасывается
+        System.out.println("Сужающее преобразование: " + smallInt); // Вывод: 123
+
+        // Пример с переменными b, c и d
+        int a2 = 120;
+        byte b2 = (byte) (a2 + 10); // Приведение типа, результат 130, но byte может хранить только до 127
+        byte c2 = (byte) (a2 + 10); // Приведение типа, результат 130, но byte может хранить только до 127
+        byte d2 = (byte) (a2 + 1); // Приведение типа, результат 121
+        System.out.println("Значение b: " + b2); // Вывод: -126 (из-за переполнения)
+        System.out.println("Значение c: " + c2); // Вывод: -126 (из-за переполнения)
+        System.out.println("Значение d: " + d2); // Вывод: 121
+
+        // Пример использования type interface и var
+        var numberList = new java.util.ArrayList<Integer>(); // Используем var для объявления списка
+        numberList.add(1);
+        numberList.add(2);
+        numberList.add(3);
+        System.out.println("Список чисел: " + numberList);
+    }
+}
