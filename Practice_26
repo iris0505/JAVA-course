@@ -1,0 +1,60 @@
+public class StringBufferStringBuilderDemo {
+    public static void main(String[] args) {
+        // Создание объекта String
+        String str = "Hello, World!";
+        
+        // Преобразование String в StringBuffer
+        StringBuffer stringBuffer = new StringBuffer(str);
+        System.out.println("StringBuffer: " + stringBuffer);
+        
+        // Преобразование String в StringBuilder
+        StringBuilder stringBuilder = new StringBuilder(str);
+        System.out.println("StringBuilder: " + stringBuilder);
+        
+        // 1. append() - добавляет строку в конец
+        stringBuffer.append(" How are you?");
+        System.out.println("After append: " + stringBuffer);
+        
+        // 2. insert() - вставляет строку по указанному индексу
+        stringBuffer.insert(7, "Java ");
+        System.out.println("After insert: " + stringBuffer);
+        
+        // 3. delete() - удаляет часть строки
+        stringBuffer.delete(7, 12);
+        System.out.println("After delete: " + stringBuffer);
+        
+        // 4. reverse() - разворачивает строку
+        stringBuffer.reverse();
+        System.out.println("After reverse: " + stringBuffer);
+        
+        // 5. capacity() - возвращает емкость StringBuffer
+        System.out.println("Capacity of StringBuffer: " + stringBuffer.capacity());
+        
+        // 6. length() - возвращает длину строки
+        System.out.println("Length of StringBuffer: " + stringBuffer.length());
+        
+        // 7. toString() - преобразует StringBuffer в String
+        String convertedString = stringBuffer.toString();
+        System.out.println("Converted to String: " + convertedString);
+        
+        // 8. append() - добавляет строку в конец (для StringBuilder)
+        stringBuilder.append(" Welcome to Java!");
+        System.out.println("After append in StringBuilder: " + stringBuilder);
+        
+        // 9. deleteCharAt() - удаляет символ по указанному индексу
+        stringBuilder.deleteCharAt(0);
+        System.out.println("After deleteCharAt: " + stringBuilder);
+        
+        // 10. substring() - возвращает подстроку
+        String subString = stringBuilder.substring(0, 5);
+        System.out.println("Substring: " + subString);
+        
+        // Преобразование StringBuilder обратно в String
+        String finalString = stringBuilder.toString();
+        System.out.println("Final String from StringBuilder: " + finalString);
+        
+        // Преобразование StringBuffer обратно в String
+        String finalStringFromBuffer = stringBuffer.toString();
+        System.out.println("Final String from StringBuffer: " + finalStringFromBuffer);
+    }
+}
