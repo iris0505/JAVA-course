@@ -1,0 +1,65 @@
+// 1. Интерфейс без спецификатора доступа (package-private)
+interface PackagePrivateInterface {
+    void method();
+}
+
+// 2. Публичный интерфейс
+public interface PublicInterface {
+    void method();
+}
+
+// 3. Защищенный интерфейс
+// В Java нельзя объявить интерфейс как protected на верхнем уровне.
+// Это приведет к ошибке компиляции. Однако, можно объявить его как protected
+// внутри другого класса или интерфейса.
+class OuterClass {
+    protected interface ProtectedInterface {
+        void method();
+    }
+}
+
+// 4. Приватный интерфейс
+// В Java нельзя объявить интерфейс как private на верхнем уровне.
+// Это также приведет к ошибке компиляции. Однако, можно объявить его как private
+// внутри другого класса.
+class AnotherOuterClass {
+    private interface PrivateInterface {
+        void method();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Пример использования публичного интерфейса
+        PublicInterface publicInterface = new PublicInterface() {
+            @Override
+            public void method() {
+                System.out.println("Public Interface Method");
+            }
+        };
+        publicInterface.method();
+
+        // Пример использования защищенного интерфейса
+        // Внешний класс может использовать защищенный интерфейс
+        class InnerClass implements OuterClass.ProtectedInterface {
+            @Override
+            public void method() {
+                System.out.println("Protected Interface Method");
+            }
+        }
+        InnerClass innerClass = new InnerClass();
+        innerClass.method();
+
+        // Пример использования приватного интерфейса
+        // Внешний класс не может использовать приватный интерфейс напрямую,
+        // но можно создать метод внутри внешнего класса, который использует его.
+        class InnerClassForPrivate implements AnotherOuterClass.PrivateInterface {
+            @Override
+            public void method() {
+                System.out.println("Private Interface Method");
+            }
+        }
+        InnerClassForPrivate innerClassForPrivate = new InnerClassForPrivate();
+        innerClassForPrivate.method();
+    }
+}
