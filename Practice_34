@@ -1,0 +1,61 @@
+//While
+public class Main {
+    public static void main(String[] args) {
+        int i = 0;
+        while (true) {
+            System.out.println("Бесконечный цикл");
+        }
+    }
+}
+//Do-while
+public class Main {
+    public static void main(String[] args) {
+        int i = 0;
+        do {
+            System.out.println("Бесконечный цикл");
+        } while (true);
+    }
+}
+/*Пример использования операторов break и continue с любым видом цикла
+Break*/
+public class Main {
+    public static void main(String[] args) {
+        for (int i = 0; i < 10; i++) {
+            if (i == 5) {
+                break;
+            }
+            System.out.println("i = " + i);
+        }
+    }
+}
+/*В этом примере цикл будет прерван, когда i достигнет значения 5.
+Continue*/
+public class Main {
+    public static void main(String[] args) {
+        for (int i = 0; i < 10; i++) {
+            if (i % 2 == 0) {
+                continue;
+            }
+            System.out.println("i = " + i);
+        }
+    }
+}
+/*В этом примере цикл будет пропускать итерации, когда i четное.
+Break и Continue с while*/
+public class Main {
+    public static void main(String[] args) {
+        int i = 0;
+        while (i < 10) {
+            if (i == 5) {
+                break;
+            }
+            if (i % 2 == 0) {
+                i++;
+                continue;
+            }
+            System.out.println("i = " + i);
+            i++;
+        }
+    }
+}
+//В этом примере цикл будет прерван, когда i достигнет значения 5, и будет пропускать итерации, когда i четное.
